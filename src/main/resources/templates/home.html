@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
-<div th:each="entry : ${posts}">
-    <h2 th:text="${entry.getTitle()}">text</h2>
+<div th:replace="header :: header">...</div>
+<main class="py-5 flex-fill" role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 py-2 box-shadow" th:each="entry : ${posts}">
+                <img alt="Post Title Image" class="card-img-top"
+                     th:src="'https://picsum.photos/id/'+${entry.getId()}+'/500/350'">
+                <div class="card-body">
+                    <div class="card-title" th:text="${entry.getTitle()}"></div>
+                    <p class="card-text" th:text="${entry.getLead()}"></p>
+                    <div class="card-subtext" th:text="${entry.getAuthor()}"><a href="/#"></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 </div>
 </body>
+<script th:src="@{/js/modernizr-2.8.3-respond-1.4.2.min.js}"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </html>
