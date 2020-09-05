@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <div class="card-title" th:text="${entry.getTitle()}"></div>
                     <p class="card-text" th:text="${entry.getLead()}"></p>
-                    <div class="card-subtext" th:text="${entry.getAuthor()}"><a href="/#"></a></div>
+                    <div class="card-subtext"><a href="/#" th:text="${entry.getAuthor()}"></a></div>
                 </div>
             </div>
         </div>
